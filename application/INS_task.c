@@ -1,13 +1,13 @@
-//×ËÌ¬½âËã£¬ºÃ³¤°¡¿´²»¶®Ë¼ÃÜ´ï
+//ï¿½ï¿½Ì¬ï¿½ï¿½ï¿½ã£¬ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¼ï¿½Ü´ï¿½
 /**
   ****************************(C) COPYRIGHT 2019 DJI****************************
   * @file       INS_task.c/h
   * @brief      use bmi088 to calculate the euler angle. no use ist8310, so only
   *             enable data ready pin to save cpu time.enalbe bmi088 data ready
   *             enable spi DMA to save the time spi transmit
-  *             Ö÷ÒªÀûÓÃÍÓÂÝÒÇbmi088£¬´ÅÁ¦¼Æist8310£¬Íê³É×ËÌ¬½âËã£¬µÃ³öÅ·À­½Ç£¬
-  *             Ìá¹©Í¨¹ýbmi088µÄdata ready ÖÐ¶ÏÍê³ÉÍâ²¿´¥·¢£¬¼õÉÙÊý¾ÝµÈ´ýÑÓ³Ù
-  *             Í¨¹ýDMAµÄSPI´«Êä½ÚÔ¼CPUÊ±¼ä.
+  *             ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½bmi088ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ist8310ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¬ï¿½ï¿½ï¿½ã£¬ï¿½Ã³ï¿½Å·ï¿½ï¿½ï¿½Ç£ï¿½
+  *             ï¿½á¹©Í¨ï¿½ï¿½bmi088ï¿½ï¿½data ready ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½â²¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÝµÈ´ï¿½ï¿½Ó³ï¿½
+  *             Í¨ï¿½ï¿½DMAï¿½ï¿½SPIï¿½ï¿½ï¿½ï¿½ï¿½Ô¼CPUÊ±ï¿½ï¿½.
   * @note       
   * @history
   *  Version    Date            Author          Modification
@@ -39,7 +39,7 @@
 #include "detect_task.h"
 
 
-#define IMU_temp_PWM(pwm)  imu_pwm_set(pwm)                    //pwm¸ø¶¨
+#define IMU_temp_PWM(pwm)  imu_pwm_set(pwm)                    //pwmï¿½ï¿½ï¿½ï¿½
 
 #define BMI088_BOARD_INSTALL_SPIN_MATRIX    \
     {0.0f, 1.0f, 0.0f},                     \
@@ -64,12 +64,12 @@
   * @retval         none
   */
 /**
-  * @brief          Ðý×ªÍÓÂÝÒÇ,¼ÓËÙ¶È¼ÆºÍ´ÅÁ¦¼Æ,²¢¼ÆËãÁãÆ¯,ÒòÎªÉè±¸ÓÐ²»Í¬°²×°·½Ê½
-  * @param[out]     gyro: ¼ÓÉÏÁãÆ¯ºÍÐý×ª
-  * @param[out]     accel: ¼ÓÉÏÁãÆ¯ºÍÐý×ª
-  * @param[out]     mag: ¼ÓÉÏÁãÆ¯ºÍÐý×ª
-  * @param[in]      bmi088: ÍÓÂÝÒÇºÍ¼ÓËÙ¶È¼ÆÊý¾Ý
-  * @param[in]      ist8310: ´ÅÁ¦¼ÆÊý¾Ý
+  * @brief          ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ù¶È¼ÆºÍ´ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¯,ï¿½ï¿½Îªï¿½è±¸ï¿½Ð²ï¿½Í¬ï¿½ï¿½×°ï¿½ï¿½Ê½
+  * @param[out]     gyro: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¯ï¿½ï¿½ï¿½ï¿½×ª
+  * @param[out]     accel: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¯ï¿½ï¿½ï¿½ï¿½×ª
+  * @param[out]     mag: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¯ï¿½ï¿½ï¿½ï¿½×ª
+  * @param[in]      bmi088: ï¿½ï¿½ï¿½ï¿½ï¿½ÇºÍ¼ï¿½ï¿½Ù¶È¼ï¿½ï¿½ï¿½ï¿½ï¿½
+  * @param[in]      ist8310: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   * @retval         none
   */
 static void imu_cali_slove(fp32 gyro[3], fp32 accel[3], fp32 mag[3], bmi088_real_data_t *bmi088, ist8310_real_data_t *ist8310);
@@ -80,8 +80,8 @@ static void imu_cali_slove(fp32 gyro[3], fp32 accel[3], fp32 mag[3], bmi088_real
   * @retval         none
   */
 /**
-  * @brief          ¿ØÖÆbmi088µÄÎÂ¶È
-  * @param[in]      temp:bmi088µÄÎÂ¶È
+  * @brief          ï¿½ï¿½ï¿½ï¿½bmi088ï¿½ï¿½ï¿½Â¶ï¿½
+  * @param[in]      temp:bmi088ï¿½ï¿½ï¿½Â¶ï¿½
   * @retval         none
   */
 static void imu_temp_control(fp32 temp);
@@ -91,8 +91,8 @@ static void imu_temp_control(fp32 temp);
   * @retval         none
   */
 /**
-  * @brief          ¸ù¾Ýimu_update_flagµÄÖµ¿ªÆôSPI DMA
-  * @param[in]      temp:bmi088µÄÎÂ¶È
+  * @brief          ï¿½ï¿½ï¿½ï¿½imu_update_flagï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½SPI DMA
+  * @param[in]      temp:bmi088ï¿½ï¿½ï¿½Â¶ï¿½
   * @retval         none
   */
 static void imu_cmd_spi_dma(void);
@@ -141,10 +141,10 @@ static uint8_t first_temperate;
 static const fp32 imu_temp_PID[3] = {TEMPERATURE_PID_KP, TEMPERATURE_PID_KI, TEMPERATURE_PID_KD};
 static pid_type_def imu_temp_pid;
 
-static const float timing_time = 0.001f;   //tast run time , unit s.ÈÎÎñÔËÐÐµÄÊ±¼ä µ¥Î» s
+static const float timing_time = 0.001f;   //tast run time , unit s.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½Ê±ï¿½ï¿½ ï¿½ï¿½Î» s
 
 
-//¼ÓËÙ¶È¼ÆµÍÍ¨ÂË²¨
+//ï¿½ï¿½ï¿½Ù¶È¼Æµï¿½Í¨ï¿½Ë²ï¿½
 static fp32 accel_fliter_1[3] = {0.0f, 0.0f, 0.0f};
 static fp32 accel_fliter_2[3] = {0.0f, 0.0f, 0.0f};
 static fp32 accel_fliter_3[3] = {0.0f, 0.0f, 0.0f};
@@ -157,7 +157,7 @@ static fp32 INS_gyro[3] = {0.0f, 0.0f, 0.0f};
 static fp32 INS_accel[3] = {0.0f, 0.0f, 0.0f};
 static fp32 INS_mag[3] = {0.0f, 0.0f, 0.0f};
 static fp32 INS_quat[4] = {0.0f, 0.0f, 0.0f, 0.0f};
-fp32 INS_angle[3] = {0.0f, 0.0f, 0.0f};      //euler angle, unit rad.Å·À­½Ç µ¥Î» rad
+fp32 INS_angle[3] = {0.0f, 0.0f, 0.0f};      //euler angle, unit rad.Å·ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Î» rad
 
 
 
@@ -169,7 +169,7 @@ fp32 INS_angle[3] = {0.0f, 0.0f, 0.0f};      //euler angle, unit rad.Å·À­½Ç µ¥Î»
   * @retval         none
   */
 /**
-  * @brief          imuÈÎÎñ, ³õÊ¼»¯ bmi088, ist8310, ¼ÆËãÅ·À­½Ç
+  * @brief          imuï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Ê¼ï¿½ï¿½ bmi088, ist8310, ï¿½ï¿½ï¿½ï¿½Å·ï¿½ï¿½ï¿½ï¿½
   * @param[in]      pvParameters: NULL
   * @retval         none
   */
@@ -198,7 +198,7 @@ void INS_task(void const *pvParameters)
     accel_fliter_1[1] = accel_fliter_2[1] = accel_fliter_3[1] = INS_accel[1];
     accel_fliter_1[2] = accel_fliter_2[2] = accel_fliter_3[2] = INS_accel[2];
     //get the handle of task
-    //»ñÈ¡µ±Ç°ÈÎÎñµÄÈÎÎñ¾ä±ú£¬
+    //ï¿½ï¿½È¡ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     INS_task_local_handler = xTaskGetHandle(pcTaskGetName(NULL));
 
     //set spi frequency
@@ -217,7 +217,7 @@ void INS_task(void const *pvParameters)
     while (1)
     {
         //wait spi DMA tansmit done
-        //µÈ´ýSPI DMA´«Êä
+        //ï¿½È´ï¿½SPI DMAï¿½ï¿½ï¿½ï¿½
         while (ulTaskNotifyTake(pdTRUE, portMAX_DELAY) != pdPASS)
         {
         }
@@ -247,7 +247,7 @@ void INS_task(void const *pvParameters)
         imu_cali_slove(INS_gyro, INS_accel, INS_mag, &bmi088_real_data, &ist8310_real_data);
 
 
-        //¼ÓËÙ¶È¼ÆµÍÍ¨ÂË²¨
+        //ï¿½ï¿½ï¿½Ù¶È¼Æµï¿½Í¨ï¿½Ë²ï¿½
         //accel low-pass filter
         accel_fliter_1[0] = accel_fliter_2[0];
         accel_fliter_2[0] = accel_fliter_3[0];
@@ -294,12 +294,12 @@ void INS_task(void const *pvParameters)
   * @retval         none
   */
 /**
-  * @brief          Ðý×ªÍÓÂÝÒÇ,¼ÓËÙ¶È¼ÆºÍ´ÅÁ¦¼Æ,²¢¼ÆËãÁãÆ¯,ÒòÎªÉè±¸ÓÐ²»Í¬°²×°·½Ê½
-  * @param[out]     gyro: ¼ÓÉÏÁãÆ¯ºÍÐý×ª
-  * @param[out]     accel: ¼ÓÉÏÁãÆ¯ºÍÐý×ª
-  * @param[out]     mag: ¼ÓÉÏÁãÆ¯ºÍÐý×ª
-  * @param[in]      bmi088: ÍÓÂÝÒÇºÍ¼ÓËÙ¶È¼ÆÊý¾Ý
-  * @param[in]      ist8310: ´ÅÁ¦¼ÆÊý¾Ý
+  * @brief          ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ù¶È¼ÆºÍ´ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¯,ï¿½ï¿½Îªï¿½è±¸ï¿½Ð²ï¿½Í¬ï¿½ï¿½×°ï¿½ï¿½Ê½
+  * @param[out]     gyro: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¯ï¿½ï¿½ï¿½ï¿½×ª
+  * @param[out]     accel: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¯ï¿½ï¿½ï¿½ï¿½×ª
+  * @param[out]     mag: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¯ï¿½ï¿½ï¿½ï¿½×ª
+  * @param[in]      bmi088: ï¿½ï¿½ï¿½ï¿½ï¿½ÇºÍ¼ï¿½ï¿½Ù¶È¼ï¿½ï¿½ï¿½ï¿½ï¿½
+  * @param[in]      ist8310: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   * @retval         none
   */
 static void imu_cali_slove(fp32 gyro[3], fp32 accel[3], fp32 mag[3], bmi088_real_data_t *bmi088, ist8310_real_data_t *ist8310)
@@ -318,8 +318,8 @@ static void imu_cali_slove(fp32 gyro[3], fp32 accel[3], fp32 mag[3], bmi088_real
   * @retval         none
   */
 /**
-  * @brief          ¿ØÖÆbmi088µÄÎÂ¶È
-  * @param[in]      temp:bmi088µÄÎÂ¶È
+  * @brief          ï¿½ï¿½ï¿½ï¿½bmi088ï¿½ï¿½ï¿½Â¶ï¿½
+  * @param[in]      temp:bmi088ï¿½ï¿½ï¿½Â¶ï¿½
   * @retval         none
   */
 static void imu_temp_control(fp32 temp)
@@ -338,14 +338,14 @@ static void imu_temp_control(fp32 temp)
     }
     else
     {
-        //ÔÚÃ»ÓÐ´ïµ½ÉèÖÃµÄÎÂ¶È£¬Ò»Ö±×î´ó¹¦ÂÊ¼ÓÈÈ
+        //ï¿½ï¿½Ã»ï¿½Ð´ïµ½ï¿½ï¿½ï¿½Ãµï¿½ï¿½Â¶È£ï¿½Ò»Ö±ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½
         //in beginning, max power
         if (temp > get_control_temperature())
         {
             temp_constant_time++;
             if (temp_constant_time > 200)
             {
-                //´ïµ½ÉèÖÃÎÂ¶È£¬½«»ý·ÖÏîÉèÖÃÎªÒ»°ë×î´ó¹¦ÂÊ£¬¼ÓËÙÊÕÁ²
+                //ï¿½ïµ½ï¿½ï¿½ï¿½ï¿½ï¿½Â¶È£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÒ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 //
                 first_temperate = 1;
                 imu_temp_pid.Iout = MPU6500_TEMP_PWM_MAX / 2.0f;
@@ -364,10 +364,10 @@ static void imu_temp_control(fp32 temp)
   * @retval         none
   */
 /**
-  * @brief          ¼ÆËãÍÓÂÝÒÇÁãÆ¯
-  * @param[out]     gyro_offset:¼ÆËãÁãÆ¯
-  * @param[in]      gyro:½ÇËÙ¶ÈÊý¾Ý
-  * @param[out]     offset_time_count: ×Ô¶¯¼Ó1
+  * @brief          ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¯
+  * @param[out]     gyro_offset:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¯
+  * @param[in]      gyro:ï¿½ï¿½ï¿½Ù¶ï¿½ï¿½ï¿½ï¿½ï¿½
+  * @param[out]     offset_time_count: ï¿½Ô¶ï¿½ï¿½ï¿½1
   * @retval         none
   */
 void gyro_offset_calc(fp32 gyro_offset[3], fp32 gyro[3], uint16_t *offset_time_count)
@@ -391,10 +391,10 @@ void gyro_offset_calc(fp32 gyro_offset[3], fp32 gyro[3], uint16_t *offset_time_c
   * @retval         none
   */
 /**
-  * @brief          Ð£×¼ÍÓÂÝÒÇ
-  * @param[out]     ÍÓÂÝÒÇµÄ±ÈÀýÒò×Ó£¬1.0fÎªÄ¬ÈÏÖµ£¬²»ÐÞ¸Ä
-  * @param[out]     ÍÓÂÝÒÇµÄÁãÆ¯£¬²É¼¯ÍÓÂÝÒÇµÄ¾²Ö¹µÄÊä³ö×÷Îªoffset
-  * @param[out]     ÍÓÂÝÒÇµÄÊ±¿Ì£¬Ã¿´ÎÔÚgyro_offsetµ÷ÓÃ»á¼Ó1,
+  * @brief          Ð£×¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  * @param[out]     ï¿½ï¿½ï¿½ï¿½ï¿½ÇµÄ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó£ï¿½1.0fÎªÄ¬ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½
+  * @param[out]     ï¿½ï¿½ï¿½ï¿½ï¿½Çµï¿½ï¿½ï¿½Æ¯ï¿½ï¿½ï¿½É¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÇµÄ¾ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªoffset
+  * @param[out]     ï¿½ï¿½ï¿½ï¿½ï¿½Çµï¿½Ê±ï¿½Ì£ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½gyro_offsetï¿½ï¿½ï¿½Ã»ï¿½ï¿½1,
   * @retval         none
   */
 void INS_cali_gyro(fp32 cali_scale[3], fp32 cali_offset[3], uint16_t *time_count)
@@ -423,9 +423,9 @@ void INS_cali_gyro(fp32 cali_scale[3], fp32 cali_offset[3], uint16_t *time_count
   * @retval         none
   */
 /**
-  * @brief          Ð£×¼ÍÓÂÝÒÇÉèÖÃ£¬½«´Óflash»òÕßÆäËûµØ·½´«ÈëÐ£×¼Öµ
-  * @param[in]      ÍÓÂÝÒÇµÄ±ÈÀýÒò×Ó£¬1.0fÎªÄ¬ÈÏÖµ£¬²»ÐÞ¸Ä
-  * @param[in]      ÍÓÂÝÒÇµÄÁãÆ¯
+  * @brief          Ð£×¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½flashï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø·ï¿½ï¿½ï¿½ï¿½ï¿½Ð£×¼Öµ
+  * @param[in]      ï¿½ï¿½ï¿½ï¿½ï¿½ÇµÄ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó£ï¿½1.0fÎªÄ¬ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½
+  * @param[in]      ï¿½ï¿½ï¿½ï¿½ï¿½Çµï¿½ï¿½ï¿½Æ¯
   * @retval         none
   */
 void INS_set_cali_gyro(fp32 cali_scale[3], fp32 cali_offset[3])
@@ -444,9 +444,9 @@ void INS_set_cali_gyro(fp32 cali_scale[3], fp32 cali_offset[3])
   * @retval         the point of INS_quat
   */
 /**
-  * @brief          »ñÈ¡ËÄÔªÊý
+  * @brief          ï¿½ï¿½È¡ï¿½ï¿½Ôªï¿½ï¿½
   * @param[in]      none
-  * @retval         INS_quatµÄÖ¸Õë
+  * @retval         INS_quatï¿½ï¿½Ö¸ï¿½ï¿½
   */
 const fp32 *get_INS_quat_point(void)
 {
@@ -458,9 +458,9 @@ const fp32 *get_INS_quat_point(void)
   * @retval         the point of INS_angle
   */
 /**
-  * @brief          »ñÈ¡Å·À­½Ç, 0:yaw, 1:pitch, 2:roll µ¥Î» rad
+  * @brief          ï¿½ï¿½È¡Å·ï¿½ï¿½ï¿½ï¿½, 0:yaw, 1:pitch, 2:roll ï¿½ï¿½Î» rad
   * @param[in]      none
-  * @retval         INS_angleµÄÖ¸Õë
+  * @retval         INS_angleï¿½ï¿½Ö¸ï¿½ï¿½
   */
 const fp32 *get_INS_angle_point(void)
 {
@@ -473,9 +473,9 @@ const fp32 *get_INS_angle_point(void)
   * @retval         the point of INS_gyro
   */
 /**
-  * @brief          »ñÈ¡½ÇËÙ¶È,0:xÖá, 1:yÖá, 2:rollÖá µ¥Î» rad/s
+  * @brief          ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ù¶ï¿½,0:xï¿½ï¿½, 1:yï¿½ï¿½, 2:rollï¿½ï¿½ ï¿½ï¿½Î» rad/s
   * @param[in]      none
-  * @retval         INS_gyroµÄÖ¸Õë
+  * @retval         INS_gyroï¿½ï¿½Ö¸ï¿½ï¿½
   */
 extern const fp32 *get_gyro_data_point(void)
 {
@@ -487,9 +487,9 @@ extern const fp32 *get_gyro_data_point(void)
   * @retval         the point of INS_accel
   */
 /**
-  * @brief          »ñÈ¡¼ÓËÙ¶È,0:xÖá, 1:yÖá, 2:rollÖá µ¥Î» m/s2
+  * @brief          ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ù¶ï¿½,0:xï¿½ï¿½, 1:yï¿½ï¿½, 2:rollï¿½ï¿½ ï¿½ï¿½Î» m/s2
   * @param[in]      none
-  * @retval         INS_accelµÄÖ¸Õë
+  * @retval         INS_accelï¿½ï¿½Ö¸ï¿½ï¿½
   */
 extern const fp32 *get_accel_data_point(void)
 {
@@ -501,9 +501,9 @@ extern const fp32 *get_accel_data_point(void)
   * @retval         the point of INS_mag
   */
 /**
-  * @brief          »ñÈ¡¼ÓËÙ¶È,0:xÖá, 1:yÖá, 2:rollÖá µ¥Î» ut
+  * @brief          ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ù¶ï¿½,0:xï¿½ï¿½, 1:yï¿½ï¿½, 2:rollï¿½ï¿½ ï¿½ï¿½Î» ut
   * @param[in]      none
-  * @retval         INS_magµÄÖ¸Õë
+  * @retval         INS_magï¿½ï¿½Ö¸ï¿½ï¿½
   */
 extern const fp32 *get_mag_data_point(void)
 {
@@ -541,7 +541,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
     {
 
         //wake up the task
-        //»½ÐÑÈÎÎñ
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (xTaskGetSchedulerState() != taskSCHEDULER_NOT_STARTED)
         {
             static BaseType_t xHigherPriorityTaskWoken;
@@ -560,8 +560,8 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
   * @retval         none
   */
 /**
-  * @brief          ¸ù¾Ýimu_update_flagµÄÖµ¿ªÆôSPI DMA
-  * @param[in]      temp:bmi088µÄÎÂ¶È
+  * @brief          ï¿½ï¿½ï¿½ï¿½imu_update_flagï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½SPI DMA
+  * @param[in]      temp:bmi088ï¿½ï¿½ï¿½Â¶ï¿½
   * @retval         none
   */
 static void imu_cmd_spi_dma(void)
@@ -569,7 +569,7 @@ static void imu_cmd_spi_dma(void)
     UBaseType_t uxSavedInterruptStatus;
     uxSavedInterruptStatus = taskENTER_CRITICAL_FROM_ISR();
 
-    //¿ªÆôÍÓÂÝÒÇµÄDMA´«Êä
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Çµï¿½DMAï¿½ï¿½ï¿½ï¿½
     if( (gyro_update_flag & (1 << IMU_DR_SHFITS) ) && !(hspi1.hdmatx->Instance->CR & DMA_SxCR_EN) && !(hspi1.hdmarx->Instance->CR & DMA_SxCR_EN)
     && !(accel_update_flag & (1 << IMU_SPI_SHFITS)) && !(accel_temp_update_flag & (1 << IMU_SPI_SHFITS)))
     {
@@ -581,7 +581,7 @@ static void imu_cmd_spi_dma(void)
         taskEXIT_CRITICAL_FROM_ISR(uxSavedInterruptStatus);
         return;
     }
-    //¿ªÆô¼ÓËÙ¶È¼ÆµÄDMA´«Êä
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù¶È¼Æµï¿½DMAï¿½ï¿½ï¿½ï¿½
     if((accel_update_flag & (1 << IMU_DR_SHFITS)) && !(hspi1.hdmatx->Instance->CR & DMA_SxCR_EN) && !(hspi1.hdmarx->Instance->CR & DMA_SxCR_EN)
     && !(gyro_update_flag & (1 << IMU_SPI_SHFITS)) && !(accel_temp_update_flag & (1 << IMU_SPI_SHFITS)))
     {
@@ -620,7 +620,7 @@ void DMA2_Stream2_IRQHandler(void)
         __HAL_DMA_CLEAR_FLAG(hspi1.hdmarx, __HAL_DMA_GET_TC_FLAG_INDEX(hspi1.hdmarx));
 
         //gyro read over
-        //ÍÓÂÝÒÇ¶ÁÈ¡Íê±Ï
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ç¶ï¿½È¡ï¿½ï¿½ï¿½
         if(gyro_update_flag & (1 << IMU_SPI_SHFITS))
         {
             gyro_update_flag &= ~(1 << IMU_SPI_SHFITS);
@@ -631,7 +631,7 @@ void DMA2_Stream2_IRQHandler(void)
         }
 
         //accel read over
-        //¼ÓËÙ¶È¼Æ¶ÁÈ¡Íê±Ï
+        //ï¿½ï¿½ï¿½Ù¶È¼Æ¶ï¿½È¡ï¿½ï¿½ï¿½
         if(accel_update_flag & (1 << IMU_SPI_SHFITS))
         {
             accel_update_flag &= ~(1 << IMU_SPI_SHFITS);
@@ -640,7 +640,7 @@ void DMA2_Stream2_IRQHandler(void)
             HAL_GPIO_WritePin(CS1_ACCEL_GPIO_Port, CS1_ACCEL_Pin, GPIO_PIN_SET);
         }
         //temperature read over
-        //ÎÂ¶È¶ÁÈ¡Íê±Ï
+        //ï¿½Â¶È¶ï¿½È¡ï¿½ï¿½ï¿½
         if(accel_temp_update_flag & (1 << IMU_SPI_SHFITS))
         {
             accel_temp_update_flag &= ~(1 << IMU_SPI_SHFITS);
