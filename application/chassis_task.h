@@ -57,13 +57,13 @@
 #define CHASSIS_VY_RC_SEN 0.005f
 //in following yaw angle mode, rocker value add to angle 
 //跟随底盘yaw模式下，遥控器的yaw遥杆（max 660）增加到车体角度的比例
-#define CHASSIS_ANGLE_Z_RC_SEN 0.000003f
+#define CHASSIS_ANGLE_Z_RC_SEN 0.000002f
 //in not following yaw angle mode, rocker value change to rotation speed
 //不跟随云台的时候 遥控器的yaw遥杆（max 660）转化成车体旋转速度的比例
-#define CHASSIS_WZ_RC_SEN 0.005f
+#define CHASSIS_WZ_RC_SEN 0.01f
 
 //小陀螺模式的自旋速度
-#define CHASSIS_WZ_SPIN 8
+#define CHASSIS_WZ_SPIN 12
 
 #define CHASSIS_ACCEL_X_NUM 0.1666666667f
 #define CHASSIS_ACCEL_Y_NUM 0.3333333333f
@@ -79,18 +79,6 @@
 
 
 #define MOTOR_DISTANCE_TO_CENTER 1.0f
-
-
-//--------------------------------------------------------------------------------------------
-
-#define HERO 0
-#define INFANTRY 1
-#define MILITARY_UNIT HERO
-
-#define R_OF_WHEEL 0.1f
-#define R_OF_INFANTRY 0.5f
-
-//--------------------------------------------------------------------------------------------
 
 //chassis task control time  2ms
 //底盘任务控制间隔 2ms
@@ -137,7 +125,6 @@
 
 #define CHASSIS_WZ_SET_SCALE 0.1f
 
-
 //when chassis is not set to move, swing max angle
 //摇摆原地不动摇摆最大角度(rad)
 #define SWING_NO_MOVE_ANGLE 0.7f
@@ -148,14 +135,14 @@
 //chassis motor speed PID
 //底盘电机速度环PID
 #define M3505_MOTOR_SPEED_PID_KP 7000.0f//原数值15000.0f
-#define M3505_MOTOR_SPEED_PID_KI 0.0f//原数值10.0f
+#define M3505_MOTOR_SPEED_PID_KI 7.0f//原数值10.0f
 #define M3505_MOTOR_SPEED_PID_KD 1.0f
 #define M3505_MOTOR_SPEED_PID_MAX_OUT MAX_MOTOR_CAN_CURRENT
 #define M3505_MOTOR_SPEED_PID_MAX_IOUT 2100.0f//2000.0f
 
 //chassis follow angle PID
 //底盘旋转跟随PID
-#define CHASSIS_FOLLOW_GIMBAL_PID_KP 58.0f//40.0f,53
+#define CHASSIS_FOLLOW_GIMBAL_PID_KP 53.0f//40.0f
 #define CHASSIS_FOLLOW_GIMBAL_PID_KI 0.0f//0.0
 #define CHASSIS_FOLLOW_GIMBAL_PID_KD 8.0f//0.0
 #define CHASSIS_FOLLOW_GIMBAL_PID_MAX_OUT 8.0f
@@ -169,13 +156,10 @@ typedef enum
 {
   CHASSIS_VECTOR_FOLLOW_GIMBAL_YAW,   //chassis will follow yaw gimbal motor relative angle.底盘会跟随云台相对角度
   CHASSIS_VECTOR_FOLLOW_CHASSIS_YAW,  //chassis will have yaw angle(chassis_yaw) close-looped control.底盘有底盘角度控制闭环
-//  CHASSIS_VECTOR_NO_FOLLOW_YAW,       //chassis will have rotation speed control. 底盘有旋转速度控制
+  CHASSIS_VECTOR_NO_FOLLOW_YAW,       //chassis will have rotation speed control. 底盘有旋转速度控制
   CHASSIS_VECTOR_RAW,                 //control-current will be sent to CAN bus derectly.
 	CHASSIS_VECTOR_FOLLOW_GIMBAL_YAW_SPIN
 } chassis_mode_e;
-
-
-
 
 typedef struct
 {
@@ -211,8 +195,7 @@ typedef struct
 	
   first_order_filter_type_t chassis_cmd_slow_set_vx;  //use first order filter to slow set-point.使用一阶低通滤波减缓设定值
   first_order_filter_type_t chassis_cmd_slow_set_vy;  //use first order filter to slow set-point.使用一阶低通滤波减缓设定值
-  first_order_filter_type_t chassis_cmd_slow_set_wz;
-	
+
   fp32 vx;                          //chassis vertical speed, positive means forward,unit m/s. 底盘速度 前进方向 前为正，单位 m/s
   fp32 vy;                          //chassis horizontal speed, positive means letf,unit m/s.底盘速度 左右方向 左为正  单位 m/s
   fp32 wz;                          //chassis rotation speed, positive means counterclockwise,unit rad/s.底盘旋转角速度，逆时针为正 单位 rad/s

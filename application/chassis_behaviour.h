@@ -93,12 +93,11 @@ typedef enum
                                         //if you have a gyro sensor in chassis, please updata yaw, pitch, roll angle in "chassis_feedback_update"  function
                                         //工程底盘角度控制底盘，由于底盘未有陀螺仪，故而角度是减去云台角度而得到，
                                         //如果有底盘陀螺仪请更新底盘的yaw，pitch，roll角度 在chassis_feedback_update函数中
-//  CHASSIS_NO_FOLLOW_YAW,                //chassis does not follow angle, angle is open-loop,but wheels have closed-loop speed
+  CHASSIS_NO_FOLLOW_YAW,                //chassis does not follow angle, angle is open-loop,but wheels have closed-loop speed
                                         //底盘不跟随角度，角度是开环的，但轮子是有速度环
   CHASSIS_OPEN,                          //the value of remote control will mulitiply a value, get current value that will be sent to can bus
-                                   // 遥控器的值乘以比例成电流值 直接发送到can总线上
-//	CHASSIS_SMALL_SPIN
-	CHASSIS_SPIN,
+  CHASSIS_SPIN,                                 // 遥控器的值乘以比例成电流值 直接发送到can总线上
+	CHASSIS_SMALL_SPIN
 } chassis_behaviour_e;
 
 #define CHASSIS_OPEN_RC_SCALE 10 // in CHASSIS_OPEN mode, multiply the value. 在chassis_open 模型下，遥控器乘以该比例发送到can上
